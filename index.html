@@ -399,7 +399,7 @@
     .motivo-num {
       width: 36px; height: 36px;
       border-radius: 10px;
-      background: #dc2626;
+      background: var(--teal);
       color: white;
       font-size: 14px;
       font-weight: 800;
@@ -515,6 +515,33 @@
     .wpp-float:hover { transform: scale(1.1); }
     .wpp-float svg { width: 28px; height: 28px; fill: white; }
 
+
+    /* —— ESTRUTURA —— */
+    .sec-estrutura { padding: 72px 0; background: #fafafa; }
+    .sec-estrutura-inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .sec-estrutura .sec-tag { display: block; text-align: center; margin-bottom: 12px; }
+    .sec-estrutura .sec-titulo { text-align: center; margin-bottom: 8px; }
+    .sec-estrutura .sec-sub { text-align: center; margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .estrutura-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 240px;
+      gap: 10px;
+    }
+    .est-item { border-radius: 14px; overflow: hidden; }
+    .est-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .est-item:hover img { transform: scale(1.05); }
+    .est-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .est-item:nth-child(7) { grid-column: span 2; }
+    @media (max-width: 900px) {
+      .estrutura-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; gap: 8px; }
+      .est-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .est-item:nth-child(7) { grid-column: span 2; }
+    }
+    @media (max-width: 480px) {
+      .sec-estrutura { padding: 48px 0; }
+      .estrutura-grid { grid-auto-rows: 130px; gap: 6px; }
+    }
     /* —— RESPONSIVO —— */
     @media (max-width: 900px) {
       nav { padding: 14px 20px; }
@@ -738,6 +765,24 @@
     </div>
   </div>
 
+  <!-- ESTRUTURA -->
+  <div class="sec-estrutura">
+    <div class="sec-estrutura-inner">
+      <span class="sec-tag">Nossa Estrutura</span>
+      <h2 class="sec-titulo">Um espaço feito <span>para eles se sentirem em casa</span></h2>
+      <p class="sec-sub">Ambientes confortáveis, limpos e seguros — pensados para o bem-estar e a felicidade do seu pet.</p>
+      <div class="estrutura-grid">
+        <div class="est-item"><img src="e1.webp" alt="Estrutura Hotel Pet Yayá" loading="lazy"></div>
+        <div class="est-item"><img src="e2.webp" alt="Estrutura Hotel Pet Yayá" loading="lazy"></div>
+        <div class="est-item"><img src="e3.webp" alt="Estrutura Hotel Pet Yayá" loading="lazy"></div>
+        <div class="est-item"><img src="e4.webp" alt="Estrutura Hotel Pet Yayá" loading="lazy"></div>
+        <div class="est-item"><img src="e5.webp" alt="Estrutura Hotel Pet Yayá" loading="lazy"></div>
+        <div class="est-item"><img src="e6.webp" alt="Estrutura Hotel Pet Yayá" loading="lazy"></div>
+        <div class="est-item"><img src="e7.webp" alt="Estrutura Hotel Pet Yayá" loading="lazy"></div>
+        <div class="est-item"><img src="e8.webp" alt="Estrutura Hotel Pet Yayá" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
   <!-- POR QUÊ -->
   <div class="sec-porque">
     <div>
@@ -748,28 +793,28 @@
     <div class="motivos">
 
       <div class="motivo">
-        <div class="motivo-num">02</div>
+        <div class="motivo-num">01</div>
         <div>
           <h4>Equipe especializada no local</h4>
           <p>Monitores e adestradores treinados acompanham seu pet durante toda a estadia.</p>
         </div>
       </div>
       <div class="motivo">
-        <div class="motivo-num">03</div>
+        <div class="motivo-num">02</div>
         <div>
           <h4>Rotina personalizada</h4>
           <p>Alimenta&#xe7;&#xe3;o, descanso e hor&#xe1;rios seguindo a rotina de casa do seu pet.</p>
         </div>
       </div>
       <div class="motivo">
-        <div class="motivo-num">04</div>
+        <div class="motivo-num">03</div>
         <div>
           <h4>Socializa&#xe7;&#xe3;o e atividades</h4>
           <p>Acesso &#xe0; &#xe1;rea de socializa&#xe7;&#xe3;o e brincadeiras ao longo do dia &#x2014; sempre com supervis&#xe3;o.</p>
         </div>
       </div>
       <div class="motivo">
-        <div class="motivo-num">05</div>
+        <div class="motivo-num">04</div>
         <div>
           <h4>Pets da fam&#xed;lia juntos</h4>
           <p>Seus c&#xe3;es podem ficar juntos &#x2014; porque separar quem se ama n&#xe3;o faz sentido.</p>
