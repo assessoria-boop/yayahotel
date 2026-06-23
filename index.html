@@ -116,13 +116,36 @@
 
     /* —— HERO —— */
     .hero {
+      position: relative;
       min-height: 100svh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 80px 24px;
-      background: linear-gradient(160deg, #ffffff 0%, var(--teal-suave) 100%);
+      overflow: hidden;
+      background: var(--teal);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.4s ease-in-out;
+      will-change: opacity;
+    }
+    .hero-bg-slide.ativo { opacity: 1; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(160deg, rgba(0,30,28,0.62) 0%, rgba(0,70,66,0.72) 100%);
     }
     .hero-content {
       position: relative;
@@ -147,20 +170,22 @@
     .hero-clinica-nome {
       font-size: 13px;
       font-weight: 700;
-      color: var(--teal);
+      color: #fff;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       margin-bottom: 14px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
     }
     .hero h1 {
       font-size: clamp(38px, 10vw, 68px);
       font-weight: 900;
-      color: var(--texto);
+      color: #fff;
       letter-spacing: -2px;
       line-height: 1.05;
       margin-bottom: 28px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.45);
     }
-    .hero h1 span { color: #dc2626; }
+    .hero h1 span { color: #2ee6da; }
     .hero-localizacao { margin-bottom: 32px; }
     .loc-texto {
       background: white;
@@ -202,7 +227,8 @@
     .btn-wpp svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
     .hero-resposta {
       font-size: 13px;
-      color: var(--cinza);
+      color: rgba(255,255,255,0.9);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
       font-weight: 500;
       display: flex;
       align-items: center;
@@ -628,6 +654,17 @@
 
   <!-- HERO -->
   <div class="hero">
+    <div class="hero-bg" id="heroBg" aria-hidden="true">
+      <div class="hero-bg-slide ativo" style="background-image:url('e1.webp')"></div>
+      <div class="hero-bg-slide" style="background-image:url('e2.webp')"></div>
+      <div class="hero-bg-slide" style="background-image:url('e3.webp')"></div>
+      <div class="hero-bg-slide" style="background-image:url('e4.webp')"></div>
+      <div class="hero-bg-slide" style="background-image:url('e5.webp')"></div>
+      <div class="hero-bg-slide" style="background-image:url('e6.webp')"></div>
+      <div class="hero-bg-slide" style="background-image:url('e7.webp')"></div>
+      <div class="hero-bg-slide" style="background-image:url('e8.webp')"></div>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-logo-circulo">
         <img src="logo.jpg" alt="Hotel Pet Yay&#xe1;" width="96" height="96" />
@@ -903,6 +940,18 @@
       iframe.style.cssText = 'width:100%;height:100%;border:none;';
       wrap.appendChild(iframe);
     }
+
+    // Fundo do hero alternando entre as fotos da estrutura
+    (function() {
+      var slides = document.querySelectorAll('#heroBg .hero-bg-slide');
+      if (slides.length < 2) return;
+      var atual = 0;
+      setInterval(function() {
+        slides[atual].classList.remove('ativo');
+        atual = (atual + 1) % slides.length;
+        slides[atual].classList.add('ativo');
+      }, 4000);
+    })();
 
     // Carrossel
     var slideAtual = 0;
