@@ -101,14 +101,15 @@
     .nav-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       background: var(--verde-wpp);
       color: white;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      padding: 10px 22px;
+      padding: 8px 16px;
       border-radius: 999px;
       text-decoration: none;
+      white-space: nowrap;
       transition: all 0.2s;
     }
     .nav-btn:hover { background: var(--verde-wpp-hover); transform: translateY(-1px); }
@@ -238,26 +239,24 @@
 
     /* —— STATS —— */
     .stats {
-      border-top: 1px solid var(--borda);
-      border-bottom: 1px solid var(--borda);
-      padding: 28px 48px;
+      background: var(--teal);
+      padding: 36px 48px;
     }
     .stats-inner {
       max-width: 900px;
       margin: 0 auto;
-      display: flex;
-      justify-content: space-around;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       align-items: center;
       gap: 32px;
-      flex-wrap: wrap;
     }
     .stat { text-align: center; }
-    .stat-num { font-size: 28px; font-weight: 900; color: var(--teal); letter-spacing: -1px; }
-    .stat-label { font-size: 12px; color: var(--cinza); margin-top: 2px; font-weight: 500; }
+    .stat-num { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: -1px; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 4px; font-weight: 500; }
 
     /* —— DEPOIMENTOS —— */
     .sec-depoi {
-      background: var(--teal-suave);
+      background: var(--cinza-claro);
       padding: 88px 0;
       content-visibility: auto;
       contain-intrinsic-size: 0 700px;
@@ -577,9 +576,11 @@
       .hero h1 { letter-spacing: -1px; }
       .hero-btns { max-width: 100%; }
 
-      .stats { padding: 24px 20px; }
-      .stats-inner { gap: 16px; }
-      .stat-num { font-size: 22px; }
+      .stats { padding: 28px 20px; }
+      .stats-inner { grid-template-columns: 1fr; gap: 0; }
+      .stat { padding: 18px 0; }
+      .stat + .stat { border-top: 1px solid rgba(255,255,255,0.25); }
+      .stat-num { font-size: 24px; }
 
       .sec { padding: 56px 20px; text-align: center; }
       .sec-sub { margin-left: auto; margin-right: auto; }
@@ -901,11 +902,8 @@
           Atendimento Imediato
         </a>
       </div>
-      <div class="mapa" id="mapaWrap" style="cursor:pointer;position:relative;" onclick="carregarMapa()">
-        <div id="mapaPlaceholder" style="width:100%;height:100%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border-radius:24px;">
-          <span style="font-size:32px;">&#x1F5FA;&#xfe0f;</span>
-          <span style="font-size:14px;font-weight:600;color:#475569;">Clique para ver no mapa</span>
-        </div>
+      <div class="mapa" id="mapaWrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.170439141897!2d-46.546458799999996!3d-23.454315800000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef50e4652f8fb%3A0xf6be1103aba71ef1!2sHospital%20Veterin%C3%A1rio%2024h%20Yay%C3%A1%20-%20Guarulhos%20SP!5e0!3m2!1spt-BR!2sbr!4v1781032448283!5m2!1spt-BR!2sbr" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:100%;border:none;"></iframe>
       </div>
     </div>
   </div>
@@ -926,21 +924,6 @@
   </a>
 
   <script>
-    // Mapa lazy
-    function carregarMapa() {
-      var wrap = document.getElementById('mapaWrap');
-      var ph = document.getElementById('mapaPlaceholder');
-      if (ph) ph.remove();
-      wrap.onclick = null;
-      wrap.style.cursor = 'default';
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.170439141897!2d-46.546458799999996!3d-23.454315800000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef50e4652f8fb%3A0xf6be1103aba71ef1!2sHospital%20Veterin%C3%A1rio%2024h%20Yay%C3%A1%20-%20Guarulhos%20SP!5e0!3m2!1spt-BR!2sbr!4v1781032448283!5m2!1spt-BR!2sbr';
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = 'no-referrer-when-downgrade';
-      iframe.style.cssText = 'width:100%;height:100%;border:none;';
-      wrap.appendChild(iframe);
-    }
-
     // Fundo do hero alternando entre as fotos da estrutura
     (function() {
       var slides = document.querySelectorAll('#heroBg .hero-bg-slide');
